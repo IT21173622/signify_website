@@ -78,6 +78,49 @@ const milestones = [
   },
 ];
 
+// MilestoneCard component
+function MilestoneCard({ item, idx }: { item: any; idx: number }) {
+  const isLeft = idx % 2 === 0;
+  const { ref, inView } = useInView({ threshold: 0.2 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) controls.start('visible');
+    else controls.start('hidden');
+  }, [inView, controls]);
+
+  return (
+    <motion.div
+      ref={ref}
+      key={idx}
+      initial="hidden"
+      animate={controls}
+      transition={{ duration: 0.8, ease: 'easeOut', delay: idx * 0.1 }}
+      variants={{
+        hidden: { opacity: 0, y: isLeft ? 80 : -80 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      className={`relative z-10 flex flex-col md:flex-row ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
+    >
+      <motion.div
+        className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#536dfe] border-4 border-[#1f104a] rounded-full shadow top-6"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      />
+
+      <div className={`md:w-1/2 px-4 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+        <div className="bg-[#4b2e83] text-white p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
+          <p className="text-sm font-medium text-[#bdbdbd] mb-2">{item.date}</p>
+          <p className="text-base leading-relaxed">{item.description}</p>
+          <p className="text-sm font-semibold text-right mt-4">{item.marks}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Milestones() {
   return (
     <section
@@ -95,47 +138,9 @@ export default function Milestones() {
 
           {/* Timeline items */}
           <div className="flex flex-col gap-12">
-            {milestones.map((item, idx) => {
-              const isLeft = idx % 2 === 0;
-              const { ref, inView } = useInView({ threshold: 0.2 });
-              const controls = useAnimation();
-
-              useEffect(() => {
-                if (inView) controls.start('visible');
-                else controls.start('hidden');
-              }, [inView, controls]);
-
-              return (
-                <motion.div
-                  key={idx}
-                  ref={ref}
-                  initial="hidden"
-                  animate={controls}
-                  transition={{ duration: 0.8, ease: 'easeOut', delay: idx * 0.1 }}
-                  variants={{
-                    hidden: { opacity: 0, y: isLeft ? 80 : -80 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  className={`relative z-10 flex flex-col md:flex-row ${isLeft ? 'md:justify-start' : 'md:justify-end'}`}
-                >
-                  <motion.div
-                    className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#536dfe] border-4 border-[#1f104a] rounded-full shadow top-6"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  />
-
-                  <div className={`md:w-1/2 px-4 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <div className="bg-[#4b2e83] text-white p-6 rounded-lg shadow-lg">
-                      <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                      <p className="text-sm font-medium text-[#bdbdbd] mb-2">{item.date}</p>
-                      <p className="text-base leading-relaxed">{item.description}</p>
-                      <p className="text-sm font-semibold text-right mt-4">{item.marks}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {milestones.map((item, idx) => (
+              <MilestoneCard key={idx} item={item} idx={idx} />
+            ))}
           </div>
         </div>
       </div>
