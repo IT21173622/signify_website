@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg-dark: #1f104a;
+  --color-deep-purple: #4b2e83;
+  --color-vibrant-purple: #5e35b1;
+  --color-bright-blue: #536dfe;
+  --color-text-light: #bdbdbd;
+  --color-text-white: #ffffff;
+}
+
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-white);
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--color-bright-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-vibrant-purple);
+  transition: color 0.3s ease;
+}
