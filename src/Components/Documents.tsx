@@ -12,7 +12,7 @@ const allDocuments: Record<string, { name: string; file: string }[]> = {
     { name: 'IT21311840_Rizan S.pdf', file: '/docs/Proposal/IT21311840_Rizan S.pdf' },
   ],
   'Proposal Presentation': [
-    { name: 'Proposal Presentation', file: '/docs/Proposal Presentation/24-25J_281_Proposal_Presentation.pptx' },
+    { name: 'Proposal Presentation', file: 'https://docs.google.com/presentation/d/1NdYJ-2MsoLsAyCXH_AsAZDiE9tRmHoE9/edit?usp=drive_link&ouid=116184159624059502853&rtpof=true&sd=true' },
   ],
   'Checklist': [
     { name: 'Checklist 1', file: '/docs/Checklist/24_25J_281_MasterSheetOfResearchPapersStudied-2.xlsx' },
@@ -21,13 +21,13 @@ const allDocuments: Record<string, { name: string; file: string }[]> = {
     { name: 'Checklist 4', file: '/docs/Checklist/24-25J-281_MLOps Report.pdf' },
   ],
   'Progress Presentation 01': [
-    { name: 'Progress Presentation 1', file: '/docs/pp1/24-25J_281_Progress_Presentation1.pptx' },
+    { name: 'Progress Presentation 1', file: 'https://docs.google.com/presentation/d/1lgpv-UoMvYbBgHMO2Ee9HHBH56hl7Op4/edit?usp=drive_link&ouid=116184159624059502853&rtpof=true&sd=true' },
   ],
   'Research Paper': [
     { name: 'Research Paper', file: '/docs/Research Paper/24_25J_281.pdf' },
   ],
   'Progress Presentation 02': [
-    { name: 'Progress Presentation 2', file: '/docs/pp2/24-25J_281_Progress_Presentation2.pptx' },
+    { name: 'Progress Presentation 2', file: 'https://docs.google.com/presentation/d/1G-H5hWbSeC4llPVEbS56yGuJNBq-PmqM/edit?usp=sharing&rtpof=true&sd=true' },
   ],
   'Final Reports': [
     { name: 'Final Group Report - 24-25j-281', file: '/docs/Final Report/Final Group Report - 24-25j-281.pdf' },
@@ -36,7 +36,7 @@ const allDocuments: Record<string, { name: string; file: string }[]> = {
     { name: 'ZF Sahla - IT21159558.pdf', file: '/docs/Final Report/ZF Sahla - IT21159558.pdf' },
   ],
   'Final Presentation': [
-    { name: 'Final Presentation', file: '/docs/Final Presentation/Final .pptx' },
+    { name: 'Final Presentation', file: 'https://docs.google.com/presentation/d/1NdYJ-2MsoLsAyCXH_AsAZDiE9tRmHoE9/edit?usp=drive_link&ouid=116184159624059502853&rtpof=true&sd=true' },
   ],
   'Logbook': [
     { name: 'Project Logbook', file: '' },
