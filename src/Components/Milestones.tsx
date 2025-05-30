@@ -3,7 +3,14 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 
-const milestones = [
+type Milestone = {
+  title: string;
+  date: string;
+  description: string;
+  marks: string;
+};
+
+const milestones: Milestone[] = [
   {
     title: 'Topic Assessment Submission',
     date: 'May 2024',
@@ -78,8 +85,12 @@ const milestones = [
   },
 ];
 
-// MilestoneCard component
-function MilestoneCard({ item, idx }: { item: any; idx: number }) {
+type MilestoneProps = {
+  item: Milestone;
+  idx: number;
+};
+
+function MilestoneCard({ item, idx }: MilestoneProps) {
   const isLeft = idx % 2 === 0;
   const { ref, inView } = useInView({ threshold: 0.2 });
   const controls = useAnimation();
