@@ -1,8 +1,18 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Linkedin, Facebook, Mail } from 'lucide-react';
+import Image from 'next/image';
 
-const students = [
+interface Member {
+  name: string;
+  role: string;
+  image: string;
+  linkedin?: string;
+  facebook?: string;
+  email?: string;
+}
+
+const students: Member[] = [
   {
     name: 'Rizan S',
     role: 'Interactive ASL Learning Developer',
@@ -29,7 +39,7 @@ const students = [
   },
 ];
 
-const supervisors = [
+const supervisors: Member[] = [
   {
     name: 'Ms. Thamali Kelegama',
     role: 'Supervisor',
@@ -48,7 +58,7 @@ const supervisors = [
   },
 ];
 
-function MemberCard({ member, idx }: { member: any; idx: number }) {
+function MemberCard({ member, idx }: { member: Member; idx: number }) {
   return (
     <motion.div
       key={idx}
@@ -59,10 +69,12 @@ function MemberCard({ member, idx }: { member: any; idx: number }) {
       transition={{ duration: 0.6, delay: idx * 0.15, ease: 'easeOut' }}
       className="bg-[#4b2e83] text-white rounded-xl shadow-md w-60 flex flex-col items-center py-8 px-6 hover:shadow-lg transition-shadow"
     >
-      <img
+      <Image
         src={member.image}
         alt={member.name}
-        className="w-36 h-36 object-cover rounded-full shadow-md mb-4 bg-[#1f104a] border-4 border-[#536dfe] scale-110"
+        width={144}  // 36 * 4 (tailwind w-36/h-36 is 9rem = 144px)
+        height={144}
+        className="object-cover rounded-full shadow-md mb-4 bg-[#1f104a] border-4 border-[#536dfe] scale-110"
       />
       <h3 className="font-bold text-lg text-center">{member.name}</h3>
       <p className="text-sm text-[#bdbdbd] text-center">{member.role}</p>

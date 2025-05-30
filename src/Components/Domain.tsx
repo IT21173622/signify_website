@@ -40,8 +40,7 @@ const tabContent: Record<string, React.JSX.Element> = {
 
   'Research Problems': (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-[#bdbdbd]">
-      {[
-        {
+      {[{
           title: 'Limited Interactive ASL Practice',
           description:
             'Existing systems provide passive learning without immediate gesture recognition or augmented reality feedback.',
@@ -118,7 +117,10 @@ export default function Domain() {
       '>-0.2'
     );
 
-    return () => tl.kill();
+    // Cleanup function that kills the timeline
+    return () => {
+      tl.kill();
+    };
   }, [activeTab]);
 
   return (

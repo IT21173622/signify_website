@@ -12,7 +12,13 @@ export default function Publication() {
         </h2>
 
         <p className="text-xl sm:text-2xl font-medium mb-10">
-          Our research paper titled<br /> <strong>"Signify: AI-Enhanced E-Learning for Hearing-Impaired Children"</strong> <br />has been submitted to the
+          Our research paper titled
+          <br />{' '}
+          <strong>
+            &ldquo;Signify: AI-Enhanced E-Learning for Hearing-Impaired Children&rdquo;
+          </strong>{' '}
+          <br />
+          has been submitted to the
           <br />
           <a
             href="https://icac.lk"
@@ -21,7 +27,8 @@ export default function Publication() {
             className="underline hover:text-[#536dfe]"
           >
             7th International Conference on Advancements in Computing (ICAC 2025)
-          </a>.
+          </a>
+          .
         </p>
 
         <p className="text-lg sm:text-xl text-[#bdbdbd]">

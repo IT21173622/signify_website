@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';  // Import Next.js Image component
 
 const navItems = [
   'Home',
@@ -36,7 +37,13 @@ export default function Navbar() {
     >
       <div className="w-full pl-4 pr-4 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <img src="/assets/logo.jpeg" alt="Signify Logo" className="h-10 w-auto" />
+          <Image
+            src="/assets/logo.jpeg"
+            alt="Signify Logo"
+            width={40}   // approximate height of 10 (h-10 in tailwind) = 40px
+            height={40}
+            className="w-auto"
+          />
           <span className="text-xl font-bold text-[#0b3d91]">Signify</span>
         </div>
 

@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import gsap from 'gsap';
+import Image from 'next/image';
 
 const allDocuments: Record<string, { name: string; file: string }[]> = {
   'Project Registration Documents': [
@@ -44,7 +45,7 @@ const allDocuments: Record<string, { name: string; file: string }[]> = {
 };
 
 export default function Documents() {
-  const [activeTab, setActiveTab] = useState('Project Proposal');
+  const [activeTab, setActiveTab] = useState('Project Proposal Individual');
 
   useEffect(() => {
     gsap.fromTo(
@@ -96,10 +97,12 @@ export default function Documents() {
               key={index}
               className="file-card bg-[#4b2e83] shadow-md rounded-lg p-5 w-full max-w-xs flex flex-col items-center hover:shadow-lg transition"
             >
-              <img
+              <Image
                 src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
                 alt="PDF Icon"
-                className="w-14 h-14 mb-4"
+                width={56}
+                height={56}
+                className="mb-4"
               />
               <p className="text-md font-semibold mb-2 text-white break-words">{file.name}</p>
               <a
@@ -107,6 +110,8 @@ export default function Documents() {
                 download
                 className="text-sm bg-[#536dfe] hover:bg-[#5e35b1] px-4 py-2 rounded transition"
                 style={{ color: 'white', fontWeight: '600' }}
+                target={file.file.startsWith('http') ? '_blank' : undefined}
+                rel={file.file.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
                 Download
               </a>

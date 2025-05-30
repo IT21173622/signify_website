@@ -1,6 +1,6 @@
 'use client';
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 const letterVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -27,16 +27,19 @@ export default function HeroSection() {
   const [scrolling, setScrolling] = useState(false);
   const controls = useAnimation();
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     setScrolling(window.scrollY > 50);
-  };
+  }, []);
 
-  const handleMouseMove = (e: { clientX: number; clientY: number }) => {
-    const { clientX, clientY } = e;
-    const x = (clientX - window.innerWidth / 2) / 10;
-    const y = (clientY - window.innerHeight / 2) / 10;
-    controls.start({ x, y, transition: { duration: 0.1 } });
-  };
+  const handleMouseMove = useCallback(
+    (e: { clientX: number; clientY: number }) => {
+      const { clientX, clientY } = e;
+      const x = (clientX - window.innerWidth / 2) / 10;
+      const y = (clientY - window.innerHeight / 2) / 10;
+      controls.start({ x, y, transition: { duration: 0.1 } });
+    },
+    [controls]
+  );
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -45,7 +48,7 @@ export default function HeroSection() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [handleScroll, handleMouseMove]);
 
   const titleText = 'Signify';
   const subtitle = 'AI-Enhanced E-Learning for Hearing-Impaired Children';
